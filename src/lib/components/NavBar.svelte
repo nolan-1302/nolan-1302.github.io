@@ -7,9 +7,5 @@
 
         <Link href="/" text="Nolan" />
         
-        <div class="flex space-x-6">
-            <Link href="/projects" text="Projects" />
-            <Link href="/blog" text="Blogs" />
-        </div>
     </div>
 </nav>
