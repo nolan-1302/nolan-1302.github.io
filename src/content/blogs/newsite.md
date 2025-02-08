@@ -17,7 +17,7 @@ The hardest part for me was the Github pages deployment. I know it sounds dumb, 
 
 <Header title="Blogs" />
 
-I saw some of the other people in the s&box community using markdown blogs. Once you setup everything, it becomes very simple. Creating a blog is as easy as creating a markdown file and adding some meta data. Because of [mdsvex](https://mdsvex.pngwn.io/) I can use svelte components right inside the markdown file.
+Once you setup everything, it becomes very simple. Creating a blog is as easy as creating a markdown file and adding some meta data. Because of [mdsvex](https://mdsvex.pngwn.io/) I can use svelte components right inside the markdown file.
 
 ```html
 ---
