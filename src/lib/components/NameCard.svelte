@@ -12,21 +12,5 @@
 				</div>
 			</div>
 		</div>
-		<div class="rounded-md mb-4 transition-all w-full flex gap-6">
-			<a href="https://github.com/Nolankicks">
-				<img
-					src="github-mark.png"
-					alt="GitHub"
-					class="bg-cover h-12 w-12 hover:scale-105 active:scale-95 transition-all"
-				/>
-			</a>
-			<a href="https://sbox.game/nolankicks">
-				<img
-					src="sbox.png"
-					alt="S&Box"
-					class="bg-cover rounded-md h-12 w-12 hover:scale-105 active:scale-95 transition-all"
-				/>
-			</a>
-		</div>
 	</div>
 </div>
