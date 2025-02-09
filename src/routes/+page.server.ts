@@ -18,32 +18,34 @@ export const load: PageServerLoad = async ({ fetch }) => {
         })
     );
 
-    /*try
-    {
-        const allNewsPostsFetch = await fetch("https://services.facepunch.com/sbox/news/organization/nolankicks");
-
-        if (allNewsPostsFetch.ok) {
-            let newsPosts: NewsPost[] = await allNewsPostsFetch.json();
-    
-            if (newsPosts) {
-                newsPosts = newsPosts.filter((post: NewsPost) => post.Sections[0].Contents !== "");
-    
-                let newsAsBlog = newsPosts.map((post: NewsPost) => {
-                    return NewsAsBlog(post);
-                });
-    
-                unsortedPosts = unsortedPosts.concat(newsAsBlog);
-            }
-        }
-    }
-    catch
-    {}*/
-
     unsortedPosts = unsortedPosts.filter((post: App.BlogPost) => post.published ?? true);
 
     const posts = unsortedPosts.sort((a, b) => {
         return new Date(b.date).valueOf() - new Date(a.date).valueOf();
     });
 
-    return { posts };
+    const allProjectFiles = import.meta.glob("/src/content/projects/*.md");
+        const iterableProjectFiles = Object.entries(allProjectFiles);
+    
+        let unsortedProjects: App.Project[] = await Promise.all(
+            iterableProjectFiles.map(async ([filePath, resolver]) => {
+                const { metadata }: any = await resolver();
+                const { name } = path.parse(filePath);
+                
+                return {
+                    slug: name,
+                    ...metadata
+                };
+            })
+        );
+        
+        unsortedProjects = unsortedProjects.filter( (post: App.Project) => post.published ?? true );
+    
+        const projects = unsortedProjects.sort((a, b) => {
+            return new Date(b.date).valueOf() - new Date(a.date).valueOf();
+        });
+
+        console.log( projects );
+
+    return { posts, projects };
 };

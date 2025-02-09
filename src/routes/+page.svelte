@@ -10,7 +10,7 @@
 
 <NameCard />
 
-<div class="w-full flex items-center justify-center p-5 pt-0">
+<div class="w-full flex items-center justify-center px-5">
 	<div class="flex flex-col items-center justify-center max-w-3xl rounded-md animate-fadein w-full">
 		<h2 class="text-white font-poppins text-2xl flex items-start w-full font-bolder">
 			Latest Blog
@@ -27,6 +27,32 @@
 			{/if}
 			<p class="text-gray-400 text-white">
 				{new Date(data.posts[0]?.date).toLocaleDateString('en-US', {
+					year: 'numeric',
+					month: 'short',
+					day: 'numeric'
+				})}
+			</p>
+		</a>
+	</div>
+</div>
+
+<div class="w-full flex items-center justify-center px-5">
+	<div class="flex flex-col items-center justify-center max-w-3xl rounded-md animate-fadein w-full">
+		<h2 class="text-white font-poppins text-2xl flex items-start w-full font-bolder">
+			Latest Project
+		</h2>
+		<p class="bg-white rounded-lg h-1 flex transition-all my-5 text-white mx-4 w-full" />
+		<a
+			href={`projects/${data.projects[0]?.slug}`}
+			class="block p-5 bg-secondary rounded-md mb-4 hover:scale-[1.01] active:scale-[0.99] transition-all w-full"
+		>
+			<h2 class="text-2xl font-bold text-white">{data.projects[0]?.title}</h2>
+
+			{#if data.projects[0]?.description}
+				<p class="text-white font-semibold">{data.projects[0]?.description}</p>
+			{/if}
+			<p class="text-gray-400 text-white">
+				{new Date(data.projects[0]?.date).toLocaleDateString('en-US', {
 					year: 'numeric',
 					month: 'short',
 					day: 'numeric'
